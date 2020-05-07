@@ -1,0 +1,12 @@
+{% extends "template.html" %}
+{% block content %}
+
+    <h2>Welcome to Table Top Server!</h2>
+
+    <ul>
+    {% for url, endpoint in links %}
+    <li><a href="{{ url }}">{{ endpoint }}</a></li>
+    {% endfor %}
+    </ul>
+
+{% endblock %}
