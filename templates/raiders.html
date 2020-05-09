@@ -1,6 +1,24 @@
 {% extends "template.html" %}
 {% block content %}
 
-    <h2>Raiders! UGH!</h2>
+    <h1>Raiders! UGH!</h1>
+
+    <form method="POST" action="">
+        {% for extension, full_name in extensions %}
+            <input type="checkbox" value="{{ extension }}" name="my_checkbox"/> {{ full_name }}
+        {% endfor %}
+
+        <button type="submit">Generate</button>
+    </form>
+
+{% if tokens|length %}
+    <h2>Here B thingies. Yarr!</h2>
+        {% for token in tokens %}
+            <div>{{ token }}</div>
+        {% endfor %}
+{% else %}
+    <h2>Waiting for input...</h2>
+    <div>Select the add-ons you are using and press 'Generate'.</div>
+{% endif %}
 
 {% endblock %}
