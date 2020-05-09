@@ -1,7 +1,7 @@
 {% extends "template.html" %}
 {% block content %}
 
-    <h1>Raiders! UGH!</h1>
+    <h1>Raiders of the North Sea</h1>
 
     <form method="POST" action="">
         {% for extension, full_name in extensions %}
@@ -11,14 +11,28 @@
         <button type="submit">Generate</button>
     </form>
 
-{% if tokens|length %}
-    <h2>Here B thingies. Yarr!</h2>
-        {% for token in tokens %}
-            <div>{{ token }}</div>
+{% if locations|length %}
+    {% for batch in locations %}
+    <div class="row">
+        {% for location in batch %}
+            {% for name, tokens in location.items() %}
+                {%  set span = (12 / batch|length)|round|int %}
+                <div class="col-sm-{{ span }}">
+                    <strong>{{ name }}</strong>
+                    {% for token in tokens %}
+                        <div>{{ token }}</div>
+                    {% endfor %}
+                </div>
+           {% endfor %}
         {% endfor %}
+    </div>
+    {% endfor %}
 {% else %}
-    <h2>Waiting for input...</h2>
-    <div>Select the add-ons you are using and press 'Generate'.</div>
+
+    <div class="row">
+        <strong>Waiting for input...</strong>
+        <div class="col">Select the add-ons you are using and press 'Generate'.</div>
+    </div>
 {% endif %}
 
 {% endblock %}
