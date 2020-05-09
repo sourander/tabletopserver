@@ -64,15 +64,26 @@ class Board():
                 start = sum(split[:i])
                 stop = start + stop
 
-            print(f"Iteration {i}. Start:{start}, Stop:{stop}")
-
+            # A batch will be a single row in the board
             batch = self.locations[start:stop]
 
-            print(len(batch))
+            # There are some gaps in the board. They will be filled with empty strings.
+            empty_loc = {"": ["None"]}
 
-            for loc in batch:
+            for j, loc in enumerate(batch):
+                # Add empty locations for.. well, the empty spots on the board.
+                if i==2 and j==3:
+                    locations.append(empty_loc)
+
+                if i==4 and j==0:
+                    for _ in range(3):
+                        locations.append(empty_loc)
+
                 location = { loc.name: loc.tokens}
                 locations.append(location)
+
+            while(len(locations) < 6):
+                locations.append(empty_loc)
 
             locations_container.append(locations)
 

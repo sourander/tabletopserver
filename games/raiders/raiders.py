@@ -10,7 +10,7 @@ def raiders_config_menu(addons):
         golds = golds + 5
         meads = 40
 
-    if 'fieldOfFame' in addons:
+    if 'field_of_fame' in addons:
         jarls = 12
 
     pool = {1: ("Valk", 18), 
