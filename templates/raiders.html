@@ -16,16 +16,25 @@
     <div class="row">
         {% for location in batch %}
             {% for name, tokens in location.items() %}
+
                 {%  set span = (12 / batch|length)|round|int %}
-                <div class="col-sm-{{ span }}">
+
+                {% if name == "" %}
+                    {% set class = "col-sm-" ~ span ~ " d-none d-md-block" %}
+                {% else %}
+                    {% set class = "col-sm-" ~ span %}
+                {% endif %}
+
+                <div class="{{ class }}">
                     <strong>{{ name }}</strong><br/>
-                    {% for token in tokens %}
-                        {% if token != "None" %}
-                            <img src="static/images/raiders_token_{{ token }}.png" class="img-thumbnail" style="width: 36px; height: 36px">
-                        {% else %}
-                            {{ " " }}
-                        {% endif %}
-                    {% endfor %}
+
+                {% for token in tokens %}
+                    {% if token != "None" %}
+                        <img src="static/images/raiders_token_{{ token }}.png" class="img-thumbnail" style="width: 36px; height: 36px">
+                    {% else %}
+                        {{ " " }}
+                    {% endif %}
+                {% endfor %}
                 </div>
            {% endfor %}
         {% endfor %}
