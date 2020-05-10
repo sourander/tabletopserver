@@ -1,17 +1,41 @@
 {% extends "template.html" %}
 {% block content %}
 
-    <h1>Raiders of the North Sea</h1>
+    <div class="jumbotron text-center bg-dark text-white pt-3 pb-3">
+        <h1>Raiders of the North Sea</h1>
+        <p>Back to the <a href="/">front page.</a></p>
+    </div>
 
-    <form method="POST" action="">
-        {% for extension, full_name in extensions %}
-            <input type="checkbox" value="{{ extension }}" name="my_checkbox"/> {{ full_name }}
-        {% endfor %}
+    <div class="row justify-content-center pb-2">
+        <div class="col pt-2 pb-2">
+            <form method="POST" action="">
 
-        <button type="submit">Generate</button>
-    </form>
+                <div class="form-group row">
+                    <div class="col">
+                        {% for extension, full_name in extensions %}
+                            <div class="form-check text-center">
+                                <div class="custom-control custom-checkbox">
+                                    <input class="form-check-input custom-control-input" type="checkbox" value="{{ extension }}" name="my_checkbox" id="{{ extension }}"/>
+                                    <label class="form-check-label custom-control-label" for="{{ extension }}">{{ full_name }}</label>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-12 text-center">
+                        <button class="btn btn-primary" type="submit">Generate</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
 
 {% if locations|length %}
+
     {% for batch in locations %}
     <div class="row">
         {% for location in batch %}
@@ -25,7 +49,7 @@
                     {% set class = "col-sm-" ~ span %}
                 {% endif %}
 
-                <div class="{{ class }}">
+                <div class="{{ class }} pb-3">
                     <strong>{{ name }}</strong><br/>
 
                 {% for token in tokens %}
@@ -43,7 +67,7 @@
 {% else %}
 
     <div class="row">
-        <strong>Waiting for input...</strong>
+        <div class="col"><strong>Waiting for input...</strong></div>
         <div class="col">Select the add-ons you are using and press 'Generate'.</div>
     </div>
 {% endif %}
