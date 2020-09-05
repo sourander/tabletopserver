@@ -131,3 +131,6 @@ dmypy.json
 
 # Jupyer Notebook Prototype Files
 notebooks/
+
+# MEMO
+MEMO.md
