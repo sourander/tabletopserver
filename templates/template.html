@@ -9,12 +9,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="static/css/main.css">
 
-    <title>Table Top Server</title>
+    <title>{% block title %}{% endblock %} - Table Top wtf</title>
 
-    <meta property="og:title" content="Table Top WTF" />
+    <meta property="og:title" content="{% block og_title %}{% endblock %}" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{ request.base_url }}" />
     <meta property="og:image" content="https://www.tabletop.wtf/static/images/raiders_token_Mead.png" />
+    <meta property="og:description" content="Collection of tools for board games et cetera. Very helpful. Such wow.">
+    <meta property="og:site_name" content="Table Top wtf">
 </head>
 <body>
     <div class="container">
