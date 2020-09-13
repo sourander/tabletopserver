@@ -26,7 +26,5 @@ def raiders():
         # Get locations as a list of dictionary
         board_split = [6,6,5,3,3]
         locations = board.get_locations(board_split)
-        print(len(locations))
-
 
     return render_template("raiders.html", extensions=extensions, locations=locations)

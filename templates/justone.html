@@ -1,0 +1,46 @@
+{% extends "template.html" %}
+
+{% block title %}Random Word Picker{% endblock %}
+{% block og_title %}Random Word Picker{% endblock %}
+
+{% block content %}
+
+    <div class="jumbotron text-center bg-dark text-white pt-3 pb-3">
+        <h1>Random Word Picker</h1>
+        <p>Back to the <a href="/">front page.</a></p>
+    </div>
+
+    <div class="row justify-content-center pb-2">
+        <h2>Choose difficulty:</h2>
+    </div>
+
+    <div class="row justify-content-center pb-2">
+        <div class="col-sm-12 text-center">
+            <form method="POST" action="">
+                {% for dict_item in difficulties %}
+                    {% for text, checked in dict_item.items() %}
+                        <label class="radio-inline">
+                            <input type="radio" name="difficulty_radio" id="{{ text }}" value="{{ text }}" {{ checked }}>
+                            <span class="p-3">{{ text }}</span>
+                        </label>
+                    {% endfor %}
+                {% endfor %}
+
+                <div class="form-group row">
+                    <div class="col-sm-12 text-center">
+                        <button class="btn btn-primary mt-3" type="submit" value="Select Difficulty">Generate</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row justify-content-center pb-2">
+        <h2 class="display-4 pt-5">{{ query_result }}</h2>
+    </div>
+
+
+
+
+
+{% endblock %}
