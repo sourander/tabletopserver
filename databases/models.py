@@ -1,9 +1,10 @@
 from databases.shared import db
 
+
 class Word(db.Model):
     __tablename__ = 'words'
 
-    word__id = db.Column('id', db.Integer, primary_key=True, nullable=False)
+    word_id = db.Column('id', db.Integer, primary_key=True, nullable=False)
     word = db.Column(db.String(18), nullable=False)
     is_verb = db.Column(db.Boolean, nullable=False)
     is_subs = db.Column(db.Boolean, nullable=False)

@@ -6,12 +6,25 @@
 {% block content %}
 
     <div class="jumbotron text-center bg-dark text-white pt-3 pb-3">
-        <h1>Random Word Picker</h1>
+        <h1>Just One Word</h1>
         <p>Back to the <a href="/">front page.</a></p>
     </div>
 
+        {% if not session['difficulty'] %}
+        <div class="row justify-content-center">
+             <div class="col-sm-10 text-center">
+                 <div class="alert alert-warning"><strong>READ ME FIRST!</strong> Please be reasonable towards
+                     other Just One players and don't vote a word as difficulty is there is no reason. The yellow and red buttons
+                     will permanently mark the word as too difficult for the audience. Cookies are used for saving the chosen difficulty.
+                     You accept these cookies by pressing any button on this site.</div>
+             </div>
+        </div>
+    {% endif %}
+
     <div class="row justify-content-center pb-2">
-        <h2>Choose difficulty:</h2>
+        <div class="col-sm-12 text-center">
+            <h2>Choose difficulty:</h2>
+        </div>
     </div>
 
     <div class="row justify-content-center pb-2">
@@ -28,18 +41,27 @@
 
                 <div class="form-group row">
                     <div class="col-sm-12 text-center">
-                        <button class="btn btn-primary mt-3" type="submit" value="Select Difficulty">Generate</button>
+                        <button class="btn btn-primary mt-3" name="btn_next_word" type="submit" value="Select Difficulty">Next word</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
 
-    <div class="row justify-content-center pb-2">
-        <h2 class="display-4 pt-5">{{ query_result }}</h2>
+    <div class="row justify-content-center pb-5">
+         <div class="col-sm-12 text-center">
+             <h2 class="display-4 pt-5 pb-5">{{ query_result }}</h2>
+         </div>
     </div>
 
-
+    <div class="row justify-content-center pb-2">
+        <div class="col-sm-12 text-center">
+            <form method="POST" action="">
+                <button class="btn btn-warning mt-3" name="too_difficult" type="submit" value="Kids.{{ query_index }}">Too hard for kids</button>
+                <button class="btn btn-danger mt-3" name="too_difficult" type="submit" value="Adults.{{ query_index }}">Too hard for adults</button>
+            </form>
+        </div>
+    </div>
 
 
 
