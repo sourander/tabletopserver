@@ -129,11 +129,8 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Jupyer Notebook Prototype Files
-notebooks/
-
-# MEMO
-MEMO.md
-
 # Any Affinity Design files
 *.afdesign
+/notebooks/finworddata/
+/notebooks/letterdata/
+/notebooks/wikidata/
